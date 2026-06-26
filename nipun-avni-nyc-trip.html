@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nipun & Avni Take Manhattan 🗽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f1e3;
+    --navy:#1c2742;
+    --taxi:#f4c531;
+    --apple:#e0473e;
+    --wv:#e0524c;
+    --ev:#2ba6a4;
+    --les:#8b5fbf;
+    --soho:#f2994a;
+    --chelsea:#4caf6d;
+    --bk:#3a4a8c;
+    --travel:#8a8d93;
+    --ink:#1c2742;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background-color:var(--cream);
+    background-image:
+      radial-gradient(circle at 20px 20px, rgba(28,39,66,0.05) 2px, transparent 2.5px),
+      radial-gradient(circle at 60px 60px, rgba(28,39,66,0.05) 2px, transparent 2.5px);
+    background-size:80px 80px;
+    color:var(--ink);
+    padding-bottom:60px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px;}
+
+  /* HERO */
+  .hero{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    padding:48px 20px 64px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:6px dashed var(--taxi);
+  }
+  .hero .doodles{
+    position:absolute;inset:0;
+    font-size:34px;
+    opacity:0.18;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 10px;
+    pointer-events:none;
+  }
+  .hero h1{
+    font-family:'Caveat',cursive;
+    font-size:64px;
+    margin:0 0 6px;
+    color:var(--taxi);
+    position:relative;
+    z-index:1;
+    line-height:1.1;
+  }
+  .hero .subtitle{
+    font-size:17px;
+    font-weight:500;
+    opacity:0.9;
+    position:relative;
+    z-index:1;
+    margin:0;
+  }
+  .hero .stamp{
+    display:inline-block;
+    margin-top:18px;
+    border:2px dashed var(--taxi);
+    border-radius:6px;
+    padding:6px 16px;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--taxi);
+    position:relative;
+    z-index:1;
+  }
+
+  /* FLIGHT CARD */
+  .flight-card{
+    max-width:560px;
+    margin:-34px auto 0;
+    background:var(--navy);
+    color:#fff;
+    border-radius:18px;
+    box-shadow:0 14px 30px rgba(0,0,0,0.25);
+    position:relative;
+    z-index:2;
+    overflow:hidden;
+  }
+  .flight-top{
+    padding:16px 20px;
+    font-size:13px;
+    color:#b9c0d4;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .flight-top b{color:#fff;}
+  .flight-route{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 24px 8px;
+  }
+  .flight-route .pt{text-align:left;}
+  .flight-route .pt.right{text-align:right;}
+  .flight-route .code{font-size:30px;font-weight:800;letter-spacing:1px;}
+  .flight-route .time{font-size:22px;font-weight:700;color:var(--taxi);}
+  .flight-route .sub{font-size:12px;color:#b9c0d4;margin-top:2px;}
+  .flight-mid{
+    text-align:center;
+    font-size:12px;
+    color:#8d94ab;
+    padding:6px 0 18px;
+    position:relative;
+  }
+  .flight-mid::before{
+    content:"✈";
+    display:block;
+    margin-bottom:4px;
+    font-size:14px;
+    color:var(--taxi);
+  }
+  .flight-foot{
+    background:rgba(255,255,255,0.05);
+    padding:10px 20px;
+    font-size:12px;
+    color:#b9c0d4;
+    text-align:center;
+  }
+  .flight-card + .flight-card{margin-top:16px;}
+  [contenteditable="true"]{
+    outline:none;
+    border-radius:4px;
+    transition:background 0.15s;
+  }
+  [contenteditable="true"]:hover{background:rgba(244,197,49,0.15);}
+  [contenteditable="true"]:focus{background:rgba(244,197,49,0.25);}
+
+  /* TIP BANNER */
+  .tip-banner{
+    max-width:760px;
+    margin:36px auto 0;
+    background:#fff;
+    border:2px dashed var(--navy);
+    border-radius:14px;
+    padding:16px 22px;
+    font-size:14.5px;
+    line-height:1.6;
+    box-shadow:3px 3px 0 rgba(28,39,66,0.08);
+  }
+  .tip-banner b{color:var(--apple);}
+
+  /* HOME BASE */
+  .homebase{
+    max-width:760px;
+    margin:18px auto 0;
+    background:#fff;
+    border-radius:14px;
+    padding:16px 22px;
+    font-size:14.5px;
+    line-height:1.6;
+    box-shadow:3px 3px 0 rgba(28,39,66,0.08);
+    border-left:6px solid var(--bk);
+  }
+  .homebase b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--bk);margin-bottom:4px;}
+
+  /* SECTION TITLES */
+  .section-title{
+    font-family:'Caveat',cursive;
+    font-size:42px;
+    text-align:center;
+    margin:54px 0 6px;
+    color:var(--navy);
+  }
+  .section-sub{
+    text-align:center;
+    font-size:13px;
+    color:#6b7088;
+    margin:0 0 28px;
+  }
+
+  /* DAY NAV */
+  .day-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin:0 auto 30px;
+    max-width:900px;
+    padding:0 20px;
+  }
+  .day-nav a{
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    background:#fff;
+    border:2px solid var(--navy);
+    border-radius:20px;
+    padding:6px 14px;
+    color:var(--navy);
+    transition:all 0.15s;
+  }
+  .day-nav a:hover{background:var(--taxi);border-color:var(--taxi);}
+
+  /* DAY CARD */
+  .day-card{
+    background:#fff;
+    border-radius:18px;
+    max-width:760px;
+    margin:0 auto 30px;
+    box-shadow:4px 6px 0 rgba(28,39,66,0.08);
+    overflow:hidden;
+    scroll-margin-top:20px;
+  }
+  .day-header{
+    background:var(--navy);
+    color:#fff;
+    padding:16px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+  }
+  .day-header .dname{
+    font-family:'Caveat',cursive;
+    font-size:30px;
+    color:var(--taxi);
+  }
+  .day-header .ddate{font-size:13px;color:#cfd4e6;font-weight:500;}
+  .day-theme{
+    padding:4px 22px 0;
+    font-size:12.5px;
+    font-weight:600;
+    color:#8d94ab;
+    font-style:italic;
+  }
+  .activity-list{padding:10px 16px 6px;}
+  .activity-row{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:12px 10px;
+    border-radius:10px;
+    border-left:5px solid var(--travel);
+    margin-bottom:8px;
+    background:#fcfaf4;
+    cursor:grab;
+    position:relative;
+  }
+  .activity-row.dragging{opacity:0.35;}
+  .activity-row .emoji{font-size:20px;line-height:1.4;width:26px;text-align:center;flex-shrink:0;}
+  .activity-row .body{flex:1;min-width:0;}
+  .activity-row .row1{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-bottom:2px;
+  }
+  .activity-row .time{
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    border-radius:6px;
+    padding:2px 8px;
+    white-space:nowrap;
+  }
+  .activity-row .title{font-weight:700;font-size:15px;}
+  .activity-row .notes{font-size:13px;color:#666;margin-top:3px;line-height:1.45;}
+  .activity-row select.nbhd{
+    font-size:11px;
+    font-weight:700;
+    border:none;
+    border-radius:6px;
+    padding:2px 6px;
+    color:#fff;
+    cursor:pointer;
+  }
+  .activity-row .del{
+    background:none;
+    border:none;
+    color:#bbb;
+    font-size:16px;
+    cursor:pointer;
+    padding:2px 6px;
+    flex-shrink:0;
+  }
+  .activity-row .del:hover{color:var(--apple);}
+  .add-activity{
+    display:block;
+    width:calc(100% - 32px);
+    margin:6px 16px 18px;
+    background:var(--cream);
+    border:2px dashed #c9bfa3;
+    border-radius:10px;
+    padding:10px;
+    font-size:13px;
+    font-weight:600;
+    color:#8d7c4a;
+    cursor:pointer;
+    font-family:'Poppins',sans-serif;
+  }
+  .add-activity:hover{background:#f0e6c8;}
+
+  /* GUIDE */
+  .guide-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+    max-width:980px;
+    margin:0 auto 50px;
+    padding:0 20px;
+  }
+  .guide-card{
+    background:#fff;
+    border-radius:16px;
+    padding:18px 20px;
+    box-shadow:4px 6px 0 rgba(28,39,66,0.08);
+    border-top:6px solid var(--travel);
+  }
+  .guide-card h3{
+    font-family:'Caveat',cursive;
+    font-size:26px;
+    margin:0 0 8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .guide-card p{font-size:13.5px;line-height:1.6;margin:0 0 8px;color:#333;}
+  .guide-card .spots{font-size:12.5px;color:#666;line-height:1.7;}
+  .guide-card .spots b{color:var(--navy);}
+  .guide-card .spots a{color:var(--bk);font-weight:700;text-decoration:underline;}
+
+  /* FOOTER */
+  .footer-note{
+    text-align:center;
+    font-size:12.5px;
+    color:#8d94ab;
+    max-width:600px;
+    margin:40px auto 0;
+    line-height:1.7;
+    padding:0 20px;
+  }
+  .reset-btn{
+    display:block;
+    margin:14px auto 0;
+    background:none;
+    border:1px solid #c9bfa3;
+    border-radius:20px;
+    padding:6px 16px;
+    font-size:12px;
+    color:#8d7c4a;
+    cursor:pointer;
+    font-family:'Poppins',sans-serif;
+  }
+  .reset-btn:hover{background:#fff;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:46px;}
+    .hero .doodles{font-size:22px;}
+    .flight-route .code{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="doodles">
+    <span>🗽</span><span>🚕</span><span>🍕</span><span>🍎</span><span>🐦</span><span>🥯</span><span>🌉</span>
+  </div>
+  <h1>Nipun &amp; Avni<br>Take Manhattan</h1>
+  <p class="subtitle">June 27 – July 2, 2026 · planned with love by Nikki 🫶🏽</p>
+  <div class="stamp">Big City Life</div>
+</div>
+
+<div class="flight-card">
+  <div class="flight-top">
+    <span>FRI, 26 JUN · <b contenteditable="true" id="flightNum">AA 276</b></span>
+    <span>Gate <b contenteditable="true" id="flightGate">B19</b></span>
+  </div>
+  <div class="flight-route">
+    <div class="pt">
+      <div class="code">SFO</div>
+      <div class="time" contenteditable="true" id="depTime">9:11 PM</div>
+      <div class="sub">San Francisco Intl · T1</div>
+    </div>
+    <div class="pt right">
+      <div class="code">JFK</div>
+      <div class="time" contenteditable="true" id="arrTime">6:00 AM</div>
+      <div class="sub">JFK · Terminal 8, Gate 1</div>
+    </div>
+  </div>
+  <div class="flight-mid">5h 49m · 2,580 mi · lands Saturday morning</div>
+  <div class="flight-foot">Welcome to NYC, Nipun &amp; Avni! 🎉 (tap any time/gate to edit)</div>
+</div>
+
+<div class="flight-card">
+  <div class="flight-top">
+    <span>THU, 2 JUL · <b contenteditable="true" id="flightNum2">AA 3318</b></span>
+    <span>Seats <b contenteditable="true" id="seats2">22E, 22F</b></span>
+  </div>
+  <div class="flight-route">
+    <div class="pt">
+      <div class="code">LGA</div>
+      <div class="time" contenteditable="true" id="depTime2">7:25 PM</div>
+      <div class="sub">LaGuardia · Terminal B</div>
+    </div>
+    <div class="pt right">
+      <div class="code">ORD</div>
+      <div class="time" contenteditable="true" id="arrTime2">9:35 PM</div>
+      <div class="sub">Chicago O'Hare · Terminal 3</div>
+    </div>
+  </div>
+  <div class="flight-mid">3h 10m · 731 mi · heading home</div>
+  <div class="flight-foot">Flight home for Nipun &amp; Avni ✈️ (tap any time/seat to edit)</div>
+</div>
+
+<div class="tip-banner">
+  💡 <b>Nikki's tip:</b> NYC is very neighborhood-based — most days you'll just pick a neighborhood and bop around! Lower Manhattan is faster &amp; cheaper by subway or on foot than by Uber. Don't be shy about asking me for help navigating — I'm one text away. 🫶🏽
+</div>
+
+<div class="homebase" contenteditable="true" id="homebase">
+  <b>🏠 Home base</b>
+  The Everly · 180 Ashland Place, Apt 3704, Brooklyn, NY — right in Fort Greene, which is SO good. Tree-lined brownstone blocks, Fort Greene Park, and some of Nikki's favorite spots in the city all within walking distance.
+</div>
+
+<h2 class="section-title">The Plan</h2>
+<p class="section-sub">tap any text to edit, drag rows to reorder, add or delete as you go</p>
+<div id="syncBadge" style="text-align:center;font-size:11px;color:#8d94ab;margin:-14px 0 20px;"></div>
+
+<nav class="day-nav" id="dayNav"></nav>
+
+<main id="itinerary"></main>
+
+<h2 class="section-title">Nikki's Cheat Sheet</h2>
+<p class="section-sub">neighborhood-by-neighborhood notes, for whenever you want to improvise</p>
+
+<div class="guide-grid">
+  <div class="guide-card" style="border-top-color:var(--wv)">
+    <h3>🧣 West Village</h3>
+    <p>Cutesy daytime wandering — Cornelia St, Pop-Up Bagels, PopUp Grocer, and chilling in Washington Square Park (surrounded by NYU/college energy + cute coffee spots).</p>
+    <p>McDougal &amp; Bleecker St are the touristy main drags — that's where <b>Comedy Cellar</b> is. Buy tickets online ahead; famous comedians do surprise drop-ins (Nikki saw Hasan Minhaj there!).</p>
+    <div class="spots">
+      <b>Froyo:</b> Culture, Birdies, Myka<br>
+      <b>Drink:</b> Dante's — espresso martinis are a MUST, especially outside<br>
+      <b>Pizza tour:</b> L'Industrie, Mama's Too, Bleecker St Pizza, Joe's Pizza
+    </div>
+  </div>
+  <div class="guide-card" style="border-top-color:var(--chelsea)">
+    <h3>🌇 Chelsea / Meatpacking</h3>
+    <p>Walk the West Side Highway over to Little Island, then Chelsea Market and the High Line. A great half-day stroll with snacks and views along the way.</p>
+  </div>
+  <div class="guide-card" style="border-top-color:var(--soho)">
+    <h3>🛍️ SoHo</h3>
+    <p>The shopping neighborhood — flagship stores, boutiques, and people-watching along Broadway and the side streets.</p>
+  </div>
+  <div class="guide-card" style="border-top-color:var(--ev)">
+    <h3>🥐 East Village</h3>
+    <p>Fun dinner spots and bars — very "twenties in NYC" if you bop around at night. Bakery-dense by day too.</p>
+    <div class="spots">
+      <b>Bagels:</b> Apollo Bagels<br>
+      <b>Bakeries:</b> Sunday Morning (cinnamon rolls), Hani's Bakery, Librae Bakery, La Cabra<br>
+      <b>Coffee:</b> Hidden Grounds (Indian-themed — Nikki's favorite!)<br>
+      <b>Vibes:</b> Book Club Bar, Kolkata Chai Co
+    </div>
+  </div>
+  <div class="guide-card" style="border-top-color:var(--les)">
+    <h3>🍷 Lower East Side</h3>
+    <p>Bars popular with the younger 20s crowd. A wine happy hour at sunset is a must — Orchard Street closes to cars and gets very vibey. Get there early for an outdoor table.</p>
+    <div class="spots"><b>Don't miss:</b> Skin Contact (or really anywhere on Orchard St)</div>
+  </div>
+  <div class="guide-card" style="border-top-color:var(--bk)">
+    <h3>🏠 Brooklyn (home base)</h3>
+    <p>The Everly, 180 Ashland Place, Apt 3704 — landing pad for jet lag naps, late nights, and easy mornings before heading into Manhattan.</p>
+    <p>You're staying right in <b>Fort Greene</b> — one of the best neighborhoods in Brooklyn! Gorgeous brownstone streets, Fort Greene Park for picnicking and skyline views, and a ton of great food and coffee within a few blocks. So so good.</p>
+    <div class="spots"><a href="https://maps.app.goo.gl/FfyFDFpPr848CVWs7" target="_blank" rel="noopener">📍 Nikki's Fort Greene &amp; Brooklyn spots map →</a></div>
+  </div>
+</div>
+
+<p class="footer-note">
+  Tap any text to edit it, drag a card by its left edge to reorder, and use "+ add plan" to drop in something new.
+  <button class="reset-btn" id="resetBtn">↺ reset to Nikki's suggestions</button>
+</p>
+
+<!-- Firebase (only used if firebaseConfig below is filled in) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script>
+// ---- Firebase config: paste your project's values here to enable live shared sync ----
+// Leave as-is and the site still works great, it just saves to each person's own browser.
+const firebaseConfig = {
+  apiKey: "AIzaSyB0BylkM_Pzd1JeNRAc06ovTsTHlhPlncU",
+  authDomain: "nipun-avni-nyc-trip.firebaseapp.com",
+  databaseURL: "https://nipun-avni-nyc-trip-default-rtdb.firebaseio.com",
+  projectId: "nipun-avni-nyc-trip",
+};
+
+const FIREBASE_ENABLED = typeof firebase !== 'undefined' && firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY";
+let dbRef = null;
+if (FIREBASE_ENABLED) {
+  firebase.initializeApp(firebaseConfig);
+  dbRef = firebase.database().ref('tripState');
+}
+
+const NEIGHBORHOODS = {
+  travel:    {label:'Travel',    color:'#8a8d93'},
+  brooklyn:  {label:'Brooklyn',  color:'#3a4a8c'},
+  'west-village': {label:'West Village', color:'#e0524c'},
+  'east-village': {label:'East Village', color:'#2ba6a4'},
+  les:       {label:'LES',       color:'#8b5fbf'},
+  soho:      {label:'SoHo',      color:'#f2994a'},
+  chelsea:   {label:'Chelsea',   color:'#4caf6d'},
+  midtown:   {label:'Midtown',   color:'#c9a227'},
+};
+
+const DEFAULT_DATA = [
+  { name:'Saturday', date:'June 27', theme:'Welcome to NYC!', activities:[
+    {time:'6:00 AM', emoji:'✈️', title:'Land at JFK (AA 276)', nbhd:'travel', notes:'Terminal 8, Gate 1'},
+    {time:'6:30 AM', emoji:'🚕', title:"Uber to Nikki's", nbhd:'brooklyn', notes:'The Everly, 180 Ashland Place Apt 3704, Brooklyn — ~25-30 min'},
+    {time:'Morning', emoji:'😴', title:'Sleep & recharge', nbhd:'brooklyn', notes:'Shower, nap off the red-eye, settle in'},
+    {time:'Evening', emoji:'🍽️', title:'Easy welcome dinner nearby', nbhd:'brooklyn', notes:'Keep night one low-key'},
+  ]},
+  { name:'Sunday', date:'June 28', theme:'West Village Wander', activities:[
+    {time:'Morning', emoji:'☕', title:'Coffee + walk Cornelia St', nbhd:'west-village', notes:''},
+    {time:'', emoji:'🥪', title:"Fonty's Deli & Dukaan", nbhd:'west-village', notes:''},
+    {time:'', emoji:'🍦', title:'Gulaab Jamuun Soft Serv & Malai', nbhd:'west-village', notes:''},
+    {time:'Afternoon', emoji:'🌳', title:'Chill in Washington Square Park', nbhd:'west-village', notes:'Surrounded by NYU — cute college energy + coffee spots'},
+    {time:'', emoji:'🎤', title:'Walk McDougal & Bleecker St', nbhd:'west-village', notes:"Comedy Cellar is here — buy tickets online ahead, surprise comedian drop-ins happen!"},
+    {time:'Evening', emoji:'🍸', title:"Espresso martinis at Dante's", nbhd:'west-village', notes:'MUST get a table outside if you can!'},
+    {time:'', emoji:'🍦', title:'Froyo stop', nbhd:'west-village', notes:'Culture, Birdies, or Myka'},
+  ]},
+  { name:'Monday', date:'June 29', theme:'Pizza Tour + Highline', activities:[
+    {time:'Midday', emoji:'🍕', title:'West Village pizza crawl', nbhd:'west-village', notes:"L'Industrie, Mama's Too, Bleecker St Pizza, Joe's Pizza — pace yourselves!"},
+    {time:'Afternoon', emoji:'🚶', title:'Walk the West Side Highway', nbhd:'chelsea', notes:''},
+    {time:'', emoji:'🏝️', title:'Little Island', nbhd:'chelsea', notes:''},
+    {time:'', emoji:'🧺', title:'Chelsea Market', nbhd:'chelsea', notes:''},
+    {time:'', emoji:'🌇', title:'The High Line', nbhd:'chelsea', notes:''},
+  ]},
+  { name:'Tuesday', date:'June 30', theme:"Avni's Day: Nails, Titanique & Vatan", activities:[
+    {time:'Morning', emoji:'💅', title:'Nails with her sister', nbhd:'travel', notes:''},
+    {time:'Afternoon', emoji:'🎭', title:'Titanique', nbhd:'midtown', notes:'Buy tickets in advance'},
+    {time:'Evening', emoji:'🍛', title:'Bottomless Gujarati dinner at Vatan', nbhd:'midtown', notes:''},
+  ]},
+  { name:'Wednesday', date:'July 1', theme:'East Village Eats & Bakeries', activities:[
+    {time:'Morning', emoji:'🥯', title:'Apollo Bagels', nbhd:'east-village', notes:''},
+    {time:'', emoji:'🥐', title:'Bakery hop', nbhd:'east-village', notes:"Sunday Morning (cinnamon rolls), Hani's Bakery, Librae Bakery, La Cabra"},
+    {time:'', emoji:'☕', title:'Hidden Grounds', nbhd:'east-village', notes:"Indian-themed coffee shop — Nikki's favorite!"},
+    {time:'Afternoon', emoji:'📚', title:'Book Club Bar', nbhd:'east-village', notes:''},
+    {time:'', emoji:'🍵', title:'Kolkata Chai Co', nbhd:'east-village', notes:''},
+    {time:'Sunset', emoji:'🍷', title:'Skin Contact wine bar happy hour', nbhd:'les', notes:'Orchard St — go early for an outdoor table, street closes to cars'},
+    {time:'Night', emoji:'🍻', title:'Dinner + bars', nbhd:'east-village', notes:'Very "twenties in NYC" energy after dark'},
+  ]},
+  { name:'Thursday', date:'July 2', theme:'Easy Fort Greene Day + Flight Home', activities:[
+    {time:'Morning', emoji:'🥐', title:'Radio Bakery', nbhd:'brooklyn', notes:'Coffee & pastries, Fort Greene staple'},
+    {time:'', emoji:'🚴', title:'Bike Prospect Park', nbhd:'brooklyn', notes:'Citi Bike it — easy loop, no rush'},
+    {time:'Afternoon', emoji:'🧳', title:'Pack up', nbhd:'travel', notes:''},
+    {time:'5:30 PM', emoji:'🚕', title:'Head to LGA', nbhd:'travel', notes:'Give yourselves time from Fort Greene'},
+    {time:'7:25 PM', emoji:'✈️', title:'Flight to Chicago (AA 3318)', nbhd:'travel', notes:'LGA Terminal B → ORD Terminal 3 · Seats 22E, 22F · arrives 9:35 PM'},
+  ]},
+];
+
+const DEFAULT_STATE = {
+  itinerary: DEFAULT_DATA,
+  flight1: { num:'AA 276', gate:'B19', dep:'9:11 PM', arr:'6:00 AM' },
+  flight2: { num:'AA 3318', seats:'22E, 22F', dep:'7:25 PM', arr:'9:35 PM' },
+  homebaseHTML: "<b>🏠 Home base</b>\n  The Everly · 180 Ashland Place, Apt 3704, Brooklyn, NY — right in Fort Greene, which is SO good. Tree-lined brownstone blocks, Fort Greene Park, and some of Nikki's favorite spots in the city all within walking distance."
+};
+
+let state = loadLocalState() || JSON.parse(JSON.stringify(DEFAULT_STATE));
+let data = state.itinerary;
+
+function loadLocalState(){
+  try{
+    const raw = localStorage.getItem('nycTripState_v2');
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return null;
+}
+
+function persist(){
+  localStorage.setItem('nycTripState_v2', JSON.stringify(state));
+  if(FIREBASE_ENABLED && dbRef) dbRef.set(state);
+}
+
+function applyStateToDOM(){
+  document.getElementById('flightNum').textContent = state.flight1.num;
+  document.getElementById('flightGate').textContent = state.flight1.gate;
+  document.getElementById('depTime').textContent = state.flight1.dep;
+  document.getElementById('arrTime').textContent = state.flight1.arr;
+  document.getElementById('flightNum2').textContent = state.flight2.num;
+  document.getElementById('seats2').textContent = state.flight2.seats;
+  document.getElementById('depTime2').textContent = state.flight2.dep;
+  document.getElementById('arrTime2').textContent = state.flight2.arr;
+  document.getElementById('homebase').innerHTML = state.homebaseHTML;
+  render();
+}
+
+function render(){
+  const nav = document.getElementById('dayNav');
+  const main = document.getElementById('itinerary');
+  nav.innerHTML = '';
+  main.innerHTML = '';
+
+  data.forEach((day, dIdx) => {
+    const a = document.createElement('a');
+    a.href = '#day-' + dIdx;
+    a.textContent = day.name.slice(0,3) + ' ' + day.date.split(' ')[1];
+    nav.appendChild(a);
+
+    const card = document.createElement('section');
+    card.className = 'day-card';
+    card.id = 'day-' + dIdx;
+
+    const header = document.createElement('div');
+    header.className = 'day-header';
+    header.innerHTML = `<span class="dname">${day.name}</span><span class="ddate">${day.date}</span>`;
+    card.appendChild(header);
+
+    const themeEl = document.createElement('div');
+    themeEl.className = 'day-theme';
+    themeEl.contentEditable = 'true';
+    themeEl.textContent = day.theme;
+    themeEl.addEventListener('blur', () => { day.theme = themeEl.textContent; persist(); });
+    card.appendChild(themeEl);
+
+    const list = document.createElement('div');
+    list.className = 'activity-list';
+    list.dataset.day = dIdx;
+
+    day.activities.forEach((act, aIdx) => {
+      list.appendChild(makeActivityRow(act, dIdx, aIdx));
+    });
+
+    list.addEventListener('dragover', e => {
+      e.preventDefault();
+      const dragging = document.querySelector('.activity-row.dragging');
+      if(!dragging) return;
+      const after = getRowAfter(list, e.clientY);
+      if(after == null) list.appendChild(dragging);
+      else list.insertBefore(dragging, after);
+    });
+    list.addEventListener('drop', e => {
+      e.preventDefault();
+      commitReorder(list);
+    });
+
+    card.appendChild(list);
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-activity';
+    addBtn.textContent = '+ add plan';
+    addBtn.addEventListener('click', () => {
+      day.activities.push({time:'', emoji:'📍', title:'New plan', nbhd:'travel', notes:''});
+      persist();
+      render();
+      const rows = document.querySelectorAll(`#day-${dIdx} .activity-row .title`);
+      const last = rows[rows.length-1];
+      if(last){ last.focus(); document.execCommand('selectAll', false, null); }
+    });
+    card.appendChild(addBtn);
+
+    main.appendChild(card);
+  });
+}
+
+function getRowAfter(list, y){
+  const rows = [...list.querySelectorAll('.activity-row:not(.dragging)')];
+  let closest = null, closestOffset = Number.NEGATIVE_INFINITY;
+  rows.forEach(row => {
+    const box = row.getBoundingClientRect();
+    const offset = y - box.top - box.height/2;
+    if(offset < 0 && offset > closestOffset){
+      closestOffset = offset;
+      closest = row;
+    }
+  });
+  return closest;
+}
+
+function commitReorder(list){
+  const dIdx = Number(list.dataset.day);
+  const newOrder = [...list.querySelectorAll('.activity-row')].map(r => Number(r.dataset.idx));
+  data[dIdx].activities = newOrder.map(i => data[dIdx].activities[i]);
+  persist();
+  render();
+}
+
+function makeActivityRow(act, dIdx, aIdx){
+  const row = document.createElement('div');
+  row.className = 'activity-row';
+  row.draggable = true;
+  row.dataset.idx = aIdx;
+  const nb = NEIGHBORHOODS[act.nbhd] || NEIGHBORHOODS.travel;
+  row.style.borderLeftColor = nb.color;
+
+  row.addEventListener('dragstart', () => row.classList.add('dragging'));
+  row.addEventListener('dragend', () => row.classList.remove('dragging'));
+
+  const emoji = document.createElement('div');
+  emoji.className = 'emoji';
+  emoji.contentEditable = 'true';
+  emoji.textContent = act.emoji;
+  emoji.addEventListener('blur', () => { act.emoji = emoji.textContent.trim() || '📍'; persist(); });
+
+  const body = document.createElement('div');
+  body.className = 'body';
+
+  const row1 = document.createElement('div');
+  row1.className = 'row1';
+
+  const time = document.createElement('span');
+  time.className = 'time';
+  time.contentEditable = 'true';
+  time.textContent = act.time || 'time';
+  time.addEventListener('blur', () => { act.time = time.textContent.trim(); persist(); });
+
+  const title = document.createElement('span');
+  title.className = 'title';
+  title.contentEditable = 'true';
+  title.textContent = act.title;
+  title.addEventListener('blur', () => { act.title = title.textContent.trim(); persist(); });
+
+  const sel = document.createElement('select');
+  sel.className = 'nbhd';
+  Object.entries(NEIGHBORHOODS).forEach(([key, val]) => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = val.label;
+    if(key === act.nbhd) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.style.background = nb.color;
+  sel.addEventListener('change', () => {
+    act.nbhd = sel.value;
+    persist();
+    render();
+  });
+
+  row1.appendChild(time);
+  row1.appendChild(title);
+  row1.appendChild(sel);
+
+  const notes = document.createElement('div');
+  notes.className = 'notes';
+  notes.contentEditable = 'true';
+  notes.textContent = act.notes;
+  notes.dataset.placeholder = 'add a note...';
+  if(!act.notes) notes.style.opacity = '0.4';
+  notes.addEventListener('focus', () => { if(!act.notes) notes.style.opacity = '1'; });
+  notes.addEventListener('blur', () => {
+    act.notes = notes.textContent.trim();
+    notes.style.opacity = act.notes ? '1' : '0.4';
+    if(!act.notes) notes.textContent = 'add a note...';
+    persist();
+  });
+  if(!act.notes) notes.textContent = 'add a note...';
+
+  body.appendChild(row1);
+  body.appendChild(notes);
+
+  const del = document.createElement('button');
+  del.className = 'del';
+  del.innerHTML = '&times;';
+  del.title = 'remove';
+  del.addEventListener('click', () => {
+    data[dIdx].activities.splice(aIdx, 1);
+    persist();
+    render();
+  });
+
+  row.appendChild(emoji);
+  row.appendChild(body);
+  row.appendChild(del);
+  return row;
+}
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if(confirm("Reset everything back to Nikki's original suggestions? This clears everyone's edits.")){
+    state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+    data = state.itinerary;
+    persist();
+    applyStateToDOM();
+  }
+});
+
+function bindField(id, group, key){
+  const el = document.getElementById(id);
+  el.addEventListener('blur', () => { state[group][key] = el.textContent; persist(); });
+}
+bindField('flightNum','flight1','num');
+bindField('flightGate','flight1','gate');
+bindField('depTime','flight1','dep');
+bindField('arrTime','flight1','arr');
+bindField('flightNum2','flight2','num');
+bindField('seats2','flight2','seats');
+bindField('depTime2','flight2','dep');
+bindField('arrTime2','flight2','arr');
+
+const homebaseEl = document.getElementById('homebase');
+homebaseEl.addEventListener('blur', () => { state.homebaseHTML = homebaseEl.innerHTML; persist(); });
+
+const syncBadge = document.getElementById('syncBadge');
+syncBadge.textContent = FIREBASE_ENABLED
+  ? '🔄 live-synced — everyone with the link sees the same plan'
+  : '💾 saved only in this browser (shared sync isn\'t configured yet)';
+
+if(FIREBASE_ENABLED){
+  dbRef.once('value').then(snap => {
+    const val = snap.val();
+    if(val){ state = val; data = state.itinerary; }
+    else { dbRef.set(state); }
+    applyStateToDOM();
+    dbRef.on('value', snap2 => {
+      const v2 = snap2.val();
+      if(v2){ state = v2; data = state.itinerary; applyStateToDOM(); }
+    });
+  });
+} else {
+  applyStateToDOM();
+}
+</script>
+</body>
+</html>
