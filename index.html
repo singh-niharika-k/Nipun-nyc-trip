@@ -262,7 +262,23 @@
     position:relative;
   }
   .activity-row.dragging{opacity:0.35;}
+  .activity-row.done{opacity:0.5;}
+  .activity-row.done .title{text-decoration:line-through;}
+  .activity-row .done-check{
+    width:18px;height:18px;
+    margin-top:3px;
+    flex-shrink:0;
+    accent-color:var(--navy);
+    cursor:pointer;
+  }
   .activity-row .emoji{font-size:20px;line-height:1.4;width:26px;text-align:center;flex-shrink:0;}
+  .activity-row .maplink{
+    font-size:13px;
+    text-decoration:none;
+    line-height:1;
+    opacity:0.6;
+  }
+  .activity-row .maplink:hover{opacity:1;}
   .activity-row .body{flex:1;min-width:0;}
   .activity-row .row1{
     display:flex;
@@ -701,9 +717,15 @@ function commitReorder(list){
   render();
 }
 
+function mapsUrl(act){
+  const nb = NEIGHBORHOODS[act.nbhd] || NEIGHBORHOODS.travel;
+  const q = encodeURIComponent(act.title + ' ' + nb.label + ' New York NY');
+  return 'https://www.google.com/maps/search/?api=1&query=' + q;
+}
+
 function makeActivityRow(act, dIdx, aIdx){
   const row = document.createElement('div');
-  row.className = 'activity-row';
+  row.className = 'activity-row' + (act.done ? ' done' : '');
   row.draggable = true;
   row.dataset.idx = aIdx;
   const nb = NEIGHBORHOODS[act.nbhd] || NEIGHBORHOODS.travel;
@@ -711,6 +733,19 @@ function makeActivityRow(act, dIdx, aIdx){
 
   row.addEventListener('dragstart', () => row.classList.add('dragging'));
   row.addEventListener('dragend', () => row.classList.remove('dragging'));
+
+  const check = document.createElement('input');
+  check.type = 'checkbox';
+  check.className = 'done-check';
+  check.draggable = false;
+  check.checked = !!act.done;
+  check.title = 'mark as done';
+  check.addEventListener('click', e => e.stopPropagation());
+  check.addEventListener('change', () => {
+    act.done = check.checked;
+    row.classList.toggle('done', act.done);
+    persist();
+  });
 
   const emoji = document.createElement('div');
   emoji.className = 'emoji';
@@ -734,7 +769,20 @@ function makeActivityRow(act, dIdx, aIdx){
   title.className = 'title';
   title.contentEditable = 'true';
   title.textContent = act.title;
-  title.addEventListener('blur', () => { act.title = title.textContent.trim(); persist(); });
+
+  const mapLink = document.createElement('a');
+  mapLink.className = 'maplink';
+  mapLink.textContent = '📍';
+  mapLink.title = 'open in Google Maps';
+  mapLink.target = '_blank';
+  mapLink.rel = 'noopener';
+  mapLink.href = mapsUrl(act);
+
+  title.addEventListener('blur', () => {
+    act.title = title.textContent.trim();
+    mapLink.href = mapsUrl(act);
+    persist();
+  });
 
   const sel = document.createElement('select');
   sel.className = 'nbhd';
@@ -754,6 +802,7 @@ function makeActivityRow(act, dIdx, aIdx){
 
   row1.appendChild(time);
   row1.appendChild(title);
+  row1.appendChild(mapLink);
   row1.appendChild(sel);
 
   const notes = document.createElement('div');
@@ -784,6 +833,7 @@ function makeActivityRow(act, dIdx, aIdx){
     render();
   });
 
+  row.appendChild(check);
   row.appendChild(emoji);
   row.appendChild(body);
   row.appendChild(del);
